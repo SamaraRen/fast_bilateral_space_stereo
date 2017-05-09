@@ -5,6 +5,8 @@ cmake_policy(VERSION 3.0)
 
 set(CMAKE_CONFIGURATION_TYPES Debug Release CACHE TYPE INTERNAL FORCE )
 
+set(CMAKE_CXX_FLAGS "-std=c++11 -O3")
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 find_package(Eigen)

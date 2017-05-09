@@ -40,8 +40,9 @@ int main(int argc, char** argv)
 	///
 	///
 #ifdef USE_EXAMPLE_1
-	const std::string image_pair_filename = "../data/middlebury_scenes2006_midd1.jpg";
-
+	std::string image_pair_filename = "../data/middlebury_scenes2006_midd1.jpg";
+	if (argc > 1)
+		image_pair_filename = argv[1];
 	// bilateral grid properties
 	const int property_grid_sigma_spatial = 16;
 	const int property_grid_sigma_luma = 16;
@@ -184,6 +185,7 @@ int main(int argc, char** argv)
 		255.0 / (stereo_matcher.get_parameters().disparity_max - stereo_matcher.get_parameters().disparity_min),
 		-stereo_matcher.get_parameters().disparity_min * 255.0f / (stereo_matcher.get_parameters().disparity_max - stereo_matcher.get_parameters().disparity_min));
 	cv::imshow("disparity image + domain transform", adjmap_dt);
+	cv::imwrite(image_pair_filename+"disparity.png", adjmap_dt);
 #endif
 
 	cv::waitKey(0);
